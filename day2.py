@@ -2,23 +2,12 @@ import pytest
 import re
 
 def get_invalid_ids_part1(start:int, end:int) -> list[int]:
-    invalid_ids = list()
-    for i in range(start, end+1):
-        s = str(i)
-        if len(s) % 2 == 0:
-            mid = len(s) // 2
-            if s[:mid] == s[mid:]:
-                invalid_ids.append(i)
-    return invalid_ids
+    return [i for i in range(start, end + 1)
+            if (s := str(i)) and len(s) % 2 == 0 and s[:len(s)//2] == s[len(s)//2:]]
 
 def get_invalid_ids_part2(start:int, end:int) -> list[int]:
-    invalid_ids = list()
     regexp = re.compile(r"^(\d+)\1+$")
-    for i in range(start, end+1):
-        s = str(i)
-        if re.match(regexp, s):
-            invalid_ids.append(i)
-    return invalid_ids
+    return [i for i in range(start, end + 1) if regexp.match(str(i))]
         
 def main():
     # Read the file
@@ -28,9 +17,9 @@ def main():
         invalid_ids_part1 = 0
         invalid_ids_part2 = 0
         for range in ranges:
-            start, end = range.split("-")
-            invalid_ids_part1 += sum(get_invalid_ids_part1(int(start), int(end)))
-            invalid_ids_part2 += sum(get_invalid_ids_part2(int(start), int(end)))
+            start, end = map(int, range.split("-"))
+            invalid_ids_part1 += sum(get_invalid_ids_part1(start, end))
+            invalid_ids_part2 += sum(get_invalid_ids_part2(start, end))
         print(f'The solution for day2/part1 = {invalid_ids_part1}')
         print(f'The solution for day2/part2 = {invalid_ids_part2}')
 
