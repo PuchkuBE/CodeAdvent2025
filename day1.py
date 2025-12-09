@@ -85,7 +85,7 @@ def ex1_b(lines: str, starting_pos: int) -> int:
 
 def main():
     # Read the file
-    with open('input/input_day1.txt','r') as f:
+    with open('input/day1.txt','r') as f:
         lines = f.readlines()
     
     solution1 = ex1(lines,50)

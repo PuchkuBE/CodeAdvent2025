@@ -11,7 +11,7 @@ def get_invalid_ids_part2(start:int, end:int) -> list[int]:
         
 def main():
     # Read the file
-    with open('input/input_day2.txt','r') as f:
+    with open('input/day2.txt','r') as f:
         line = f.readline()
         ranges = line.split(",")
         invalid_ids_part1 = 0

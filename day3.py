@@ -8,7 +8,7 @@ def largestJoltage(pack: str, size:int) -> str:
         return pack[j] + largestJoltage(pack[j+1:], size - 1)
 
 def main():
-    lines = open('input/input_day3.txt','r').read().split()
+    lines = open('input/day3.txt','r').read().split()
     
     solution1 = solution2 = 0
     for pack in lines:
