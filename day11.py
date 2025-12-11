@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
 
@@ -25,5 +24,5 @@ def searchpath(node , to, fft, dac, cache: set):
     cache[(node, fft, dac)] = nr_paths            
     return nr_paths
 
-print(f'Solution for day10/part1: {searchpath('you','out',True, True, {})}')
+print(f'Solution for day11/part1: {searchpath('you','out',True, True, {})}')
 print(f'Solution for day11/part2: {searchpath('svr','out', False, False, {})}')
